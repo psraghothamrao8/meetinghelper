@@ -1,0 +1,7 @@
+customtkinter
+pyaudiowpatch
+faster-whisper
+numpy
+requests
+moviepy
+pandas
