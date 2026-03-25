@@ -7,8 +7,10 @@ class TranscriberEngine:
         # Explicit CPU compute_type="int8" using "small" is required for robust foreign language translation (e.g., Korean)
         try:
             self.model = WhisperModel(model_size, device=device, compute_type=compute_type)
-        except Exception:
-             # Fallback if int8 fails
+        except Exception as e:
+             # Fallback if preferred compute_type/device fails
+             print(f"Warning: Failed to load model with {device}/{compute_type}. Error: {e}")
+             print("Falling back to CPU with default compute type...")
              self.model = WhisperModel(model_size, device="cpu", compute_type="default")
         self.is_running = False
         self.transcription_callback = None

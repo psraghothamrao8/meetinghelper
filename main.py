@@ -9,7 +9,7 @@ from file_processor import FileProcessor
 
 def main():
     audio_engine = AudioEngine()
-    transcriber = TranscriberEngine()
+    transcriber = TranscriberEngine(model_size="large-v3", device="cuda", compute_type="float16")
     llm_client = LlmClient()
     file_processor = FileProcessor(transcriber, llm_client)
 
